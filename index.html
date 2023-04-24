@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>html</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.8/xlsx.full.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500&family=Montserrat:wght@500&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@500&family=Bruno+Ace+SC&family=Montserrat:wght@500&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Allerta&family=Archivo:wght@500&family=Bruno+Ace+SC&family=Montserrat:wght@500&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body>
+
+  <button class="dropdown-button">Toggle dropdown</button>
+  <section class="dropdown-content">
+
+
+    <div class="import_body">
+      <div class="spread_sheet btn">
+        <input id="file-upload" type="file">
+        <label for="file-upload" id="file-upload">
+          Upload File
+        </label>
+      </div>
+      <div class="sql_search">
+        <button class="btn">SQL search</button>
+      </div>
+    </div>
+
+    <div class="drop-flex">
+
+      <div>
+
+        <h3 class="subheader">filter and sort on : </h3>
+        <div class="control-buttons">
+          <button class="btn" onclick="toggleCheckbox(this)">this page</button>
+          <button class="btn" onclick="toggleCheckbox(this)">all pages</button>
+        </div>
+
+      </div>
+      <div class="line"></div>
+      <div>
+
+        <h3 class="subheader">database manipulation : </h3>
+        <div class="control-buttons fix-width">
+          <button class="btn">edit</button>
+          <button class="btn">delete</button>
+          <button class="btn">insert</button>
+          <button class="btn">save</button>
+        </div>
+
+      </div>
+      <div class="line"></div>
+      <div>
+
+        <h3 class="subheader">columns/rows manipulation : </h3>
+        <div class="control-buttons">
+          <button class="btn">hide</button>
+          <button class="btn">unhide</button>
+        </div>
+        <div class="control-buttons margin-top-15">
+          <input class="number-input" type="number" name="rowsCount" id="" placeholder="rows per page">
+          <input class="number-input" type="number" name="columnWidth" id="" placeholder="columns width">
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="options">
+    <h3>select the input methode</h3>
+    <div class="buttons">
+      <input type="button" value="database" class="btn">
+      <input type="button" value="manually" class="btn">
+      <input type="button" value="spread sheet" class="btn active">
+    </div>
+  </div> -->
+
+  </section>
+
+
+  <div class="table-container">
+    <table id="tableContainer">
+    </table>
+  </div>
+
+
+  <script>
+    $('#file-upload').on('change', function (e) {
+      var file = e.target.files[0];
+      var reader = new FileReader();
+      reader.readAsArrayBuffer(file);
+      reader.onload = function (e) {
+        var data = new Uint8Array(reader.result);
+        var workbook = XLSX.read(data, { type: 'array' });
+        var sheetName = workbook.SheetNames[0];
+        var worksheet = workbook.Sheets[sheetName];
+        var html = XLSX.utils.sheet_to_html(worksheet);
+        $('#tableContainer').html(html);
+        $('table').addClass('table');
+        $('table tr:first-child').addClass('header');
+      }
+    });
+
+
+    function toggleCheckbox(button) {
+      button.classList.toggle("active");
+      const buttons = document.querySelectorAll(".checkbox-button");
+      const checkedButtons = [];
+
+      buttons.forEach(button => {
+        if (button.classList.contains("active")) {
+          checkedButtons.push(button.textContent);
+        }
+      });
+
+      console.log("Checked buttons:", checkedButtons);
+    }
+
+
+    // Add a click event listener to the button
+    var button = document.querySelector('.dropdown-button');
+    var content = document.querySelector('.dropdown-content');
+
+    // Set the initial display property of the content to "none"
+    content.style.display = 'none';
+
+    // Add a click event listener to the button
+    button.addEventListener('click', function () {
+      // Toggle the display of the content
+      if (content.style.display === 'none') {
+        content.style.display = 'block';
+        content.style.height = content.scrollHeight + 'px';
+      } else {
+        content.style.height = content.scrollHeight + 'px';
+        setTimeout(function () {
+          content.style.height = '0';
+          content.addEventListener('transitionend', function () {
+            content.style.display = 'none';
+          }, { once: true });
+        }, 0);
+      }
+    });
+
+  </script>
+  <div id="tableContainer"></div>
+
+
+</body>
+
+</html>

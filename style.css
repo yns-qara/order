@@ -1,0 +1,249 @@
+:root {
+    --primary-color: #154b73;
+    --border-color: #ffffffc8;
+    --text-color: #C5C6C7;
+  }
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+}
+
+
+body,
+html {
+    overflow-x: hidden;
+    background-color: #1F2833;
+}
+
+.options {
+    min-height: 15vh;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 15px;
+    width: 100vw;
+}
+
+.options h3 {
+    font-family: 'Allerta', sans-serif;
+    text-transform: uppercase;
+    font-size: 19px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.btn {
+
+    border: 2px solid var(--border-color);
+    background-color: transparent;
+    font-family: 'Archivo';
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 96.9%;
+    text-align: center;
+    letter-spacing: 0.005em;
+    color: var(--text-color);
+    width: 150px;
+    padding: 14px 0px;
+    cursor: pointer;
+    text-align: center;
+    transition: all .3s ease;
+}
+
+
+.btn:hover,
+.btn.active {
+    background-color: var(--primary-color);
+    /* color: #000000; */
+}
+
+
+.import_body {
+    padding: 25px;
+    background-color: rgba(106, 94, 94, 0.103);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    height: 15vh;
+}
+
+
+
+input[type="file"] {
+    display: none;
+}
+
+label{
+    padding: 14px 34px;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+    background-color: #bababa;
+}
+
+th {
+    background-color: var(--primary-color);;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-container {
+    margin-top: 15px;
+    width: 100%;
+    height: 75vh;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+    border: 2px solid var(--border-color);
+}
+
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.margin-top-15 {
+    margin-top: 15px;
+}
+
+.subheader {
+    font-family: 'Allerta', sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+
+
+.btn.active {
+    background-color: var(--primary-color);
+    /* color: #fff; */
+}
+
+.number-input {
+
+    border: 2px solid var(--border-color);
+    background-color: transparent;
+    font-family: 'Archivo';
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 96.9%;
+    text-align: left;
+    letter-spacing: 0.005em;
+    color: var(--text-color);
+    width: 150px;
+    padding: 14px 0px;
+    text-align: center;
+    transition: all .3s ease;
+    outline: none;
+}
+
+
+.btn:hover,
+.btn.active {
+    background-color: var(--primary-color);
+    /* color: #fff; */
+}
+
+
+.fix-width {
+    width: 350px;
+}
+
+.drop-flex {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    background-color: #66fcf227;
+    padding: 15px;
+    height: 25vh;
+}
+
+.line {
+
+    height: 100%;
+    width: 2px;
+    border-radius: 12px;
+    background-color: var(--border-color);
+
+}
+
+
+.dropdown-content {
+    display: none;
+    height: 0;
+    overflow: hidden;
+}
+
+.dropdown-button {
+    cursor: pointer;
+    border: 2px solid var(--border-color);
+    background-color: var(--primary-color);
+    font-family: 'Archivo';
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 96.9%;
+    text-align: left;
+    letter-spacing: 0.005em;
+    color: var(--text-color);
+    width: 100%;
+    padding: 14px 0px;
+    text-align: center;
+    transition: all .3s ease;
+}
+
+.dropdown-content {
+    transition: all 0.5s ease;
+    overflow: hidden;
+    border-width: 0px 2px 2px 2px;
+    border-style: solid;
+    border-color: var(--border-color);
+    
+}
+
+
+
+
+.dropdown-button:hover {
+    background-color: #ffffff;
+}
+
